@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthdays</title>
+    {{ turbo() }}
+    <style>
+        td a, td p, td button {
+            width: 100px;
+            margin: 10px;
+            text-align: center;
+        }
+    </style>
+    <meta name="turbo-cache-control" content="no-preview">
+</head>
+<body>
+    <form action="/" method="POST" data-turbo-temporary>
+        <fieldset>
+            <legend>Birthdays</legend>
+            <div>
+                <label for="name">Name:</label>
+                <br>
+                <input type="text" name="name" id="name" required style="width: 50%; height: 50px;">
+            </div>
+            <div>
+                <label for="date">Date:</label>
+                <br>
+                <input type="date" name="date" id="date" required style="width: 50%; height: 50px;">
+            </div>
+            <br>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+
+    <turbo-frame id="birthdays-frame" src="/birthdays"></turbo-frame>
+
+    <script>
+        document.addEventListener("turbo:submit-start", ({ target }) => {
+            target.reset();
+        });
+    </script>
+</body>
+</html>

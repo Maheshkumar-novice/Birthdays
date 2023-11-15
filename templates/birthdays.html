@@ -1,0 +1,12 @@
+<turbo-frame id="birthdays-frame">
+<table id="birthdays">
+    <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th></th>
+    </tr>
+    {% for birthday in birthdays %}
+        {% include "birthday.html" %}
+    {% endfor %}
+</table>
+</turbo-frame>
